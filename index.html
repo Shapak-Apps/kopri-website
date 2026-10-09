@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Köpri — offline translator</title>
+    <meta name="description"
+        content="Köpri — offline-first translator for Android: 50+ languages, huge phrasebook, XP & streaks. Download on RuStore.">
+    <link rel="icon" type="image/png" href="assets/app_icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ============ HEADER ============ -->
+    <header class="site-header">
+        <div class="container header-in">
+            <a class="brand" href="#hero">
+                <img src="assets/app_icon.png" alt="Köpri icon" class="brand-icon">
+                <span class="brand-name">Köp<em>ri</em></span>
+            </a>
+
+            <nav class="main-nav" aria-label="Main">
+                <a href="#features" data-i18n="nav_features">Features</a>
+                <a href="#interface" data-i18n="nav_interface">Interface</a>
+                <a href="#themes" data-i18n="nav_themes">Themes</a>
+                <a href="#gallery" data-i18n="nav_shots">Screenshots</a>
+                <a href="#oss" data-i18n="nav_oss">Open Source</a>
+            </nav>
+
+            <div class="header-controls">
+                <div class="seg" id="langSeg" role="group" aria-label="Language">
+                    <button data-lang="en">EN</button>
+                    <button data-lang="ru">RU</button>
+                    <button data-lang="tk">TM</button>
+                </div>
+                <div class="seg" id="themeSeg" role="group" aria-label="Theme">
+                    <button data-theme-set="light" title="Light" aria-label="Light theme">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="4.2" />
+                            <path
+                                d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7" />
+                        </svg>
+                    </button>
+                    <button data-theme-set="dark" title="Dark" aria-label="Dark theme">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.4 14.2A8.4 8.4 0 0 1 9.8 3.6a8.4 8.4 0 1 0 10.6 10.6z" />
+                        </svg>
+                    </button>
+                    <button data-theme-set="system" title="System" aria-label="System theme">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="4.5" width="18" height="12" rx="2" />
+                            <path d="M9 20h6M12 16.5V20" />
+                        </svg>
+                    </button>
+                </div>
+
+                <a class="store-badge" href="https://www.rustore.ru/catalog/app/com.kopri.translator" target="_blank"
+                    rel="noopener">
+                    <img class="rs-icon" src="assets/rustore.svg"
+                        onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e5/RuStore_logo.svg';"
+                        alt="RuStore">
+                    <span class="sb-text"><small data-i18n="badge_small">Get it on</small><b>RuStore</b></span>
+                </a>
+
+                <a class="gh-pill" href="https://github.com/Shapak-Apps/K-pri-App-for-phone" target="_blank"
+                    rel="noopener" aria-label="GitHub source code">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.66.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                    </svg>
+                    <span data-i18n="gh_btn">Source code</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <section class="hero" id="hero">
+            <div class="container hero-in">
+                <div class="hero-copy reveal">
+                    <span class="chip"><i class="dot"></i><span data-i18n="hero_chip">Version 1.0.2 • Free & Open
+                            Source</span></span>
+                    <h1 data-i18n="hero_title">Köpri — the bridge between languages</h1>
+                    <p class="lead" data-i18n="hero_sub">An offline-first translator for Android: 50+ languages, a huge
+                        phrasebook, XP, streaks and a clean interface with three themes.</p>
+
+                    <div class="hero-cta">
+                        <a class="store-badge big" href="https://www.rustore.ru/catalog/app/com.kopri.translator"
+                            target="_blank" rel="noopener">
+                            <img class="rs-icon" src="assets/rustore.svg"
+                                onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e5/RuStore_logo.svg';"
+                                alt="RuStore">
+                            <span class="sb-text"><small data-i18n="badge_small">Get it on</small><b>RuStore</b></span>
+                        </a>
+                        <a class="btn-ghost" href="https://github.com/Shapak-Apps/K-pri-App-for-phone" target="_blank"
+                            rel="noopener">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.66.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                            </svg>
+                            <span data-i18n="gh_btn">Source code</span>
+                        </a>
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat"><b><span data-count="4731">0</span></b><span data-i18n="stat1_l">phrases &
+                                words</span></div>
+                        <div class="stat"><b><span data-count="50">0</span>+</b><span data-i18n="stat2_l">translation
+                                languages</span></div>
+                        <div class="stat"><b><span data-count="100">0</span></b><span data-i18n="stat3_l">XP
+                                levels</span></div>
+                        <div class="stat"><b>10–60×</b><span data-i18n="stat4_l">faster with C++ FFI</span></div>
+                    </div>
+                </div>
+
+                <!-- Interactive phone: bottom nav like in the app -->
+                <div class="hero-phone reveal">
+                    <span class="float-chip fc1">Offline-first</span>
+                    <span class="float-chip fc2">C++17 FFI</span>
+                    <span class="float-chip fc3">3 themes</span>
+                    <div class="phone">
+                        <span class="notch"></span>
+                        <div class="screen">
+                            <img id="phoneScreen" src="assets/screenshots/6.jpg" alt="Köpri app screen">
+                        </div>
+                        <nav class="phone-nav" id="phoneNav" aria-label="App tabs">
+                            <button data-shot="1"><svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="3.2" />
+                                    <path
+                                        d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34h.09a1.7 1.7 0 0 0 1-1.55V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87v.09a1.7 1.7 0 0 0 1.55 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1z" />
+                                </svg><span data-i18n="tab1">Sazlamalar</span></button>
+                            <button data-shot="2"><svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="8.5" />
+                                    <path d="M12 11v5M12 7.5h.01" />
+                                </svg><span data-i18n="tab2">Programma barada</span></button>
+                            <button data-shot="3"><svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="8" r="3.6" />
+                                    <path d="M5 20c.8-3.6 3.6-5.4 7-5.4s6.2 1.8 7 5.4" />
+                                </svg><span data-i18n="tab3">Profil</span></button>
+                            <button data-shot="4"><svg viewBox="0 0 24 24">
+                                    <rect x="3" y="6" width="12" height="15" rx="2" />
+                                    <path d="M8 3h11a2 2 0 0 1 2 2v12" />
+                                </svg><span data-i18n="tab4">Kartlar</span></button>
+                            <button data-shot="5"><svg viewBox="0 0 24 24">
+                                    <path d="M4 8h3l2-2.5h6L17 8h3v11H4z" />
+                                    <circle cx="12" cy="13" r="3.2" />
+                                </svg><span data-i18n="tab5">Kamera</span></button>
+                            <button data-shot="6" class="active"><svg viewBox="0 0 24 24">
+                                    <path d="M3 5h8M7 3v2M4 19l5-11 5 11M6 15h6M13 19h8M17 5l4 14M15 13h5" />
+                                </svg><span data-i18n="tab6">Terjime</span></button>
+                        </nav>
+                    </div>
+                </div>
+        </section>
+
+        <!-- ============ MARQUEE ============ -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>Salamlaşma we tanyşlyk</span><i>•</i><span>Edep we
+                    ötüç</span><i>•</i><span>Maşgala</span><i>•</i><span>Restoranda</span><i>•</i><span>Içgiler</span><i>•</i><span>Allergiýa
+                    we dieta</span><i>•</i>
+                <span>Salamlaşma we tanyşlyk</span><i>•</i><span>Edep we
+                    ötüç</span><i>•</i><span>Maşgala</span><i>•</i><span>Restoranda</span><i>•</i><span>Içgiler</span><i>•</i><span>Allergiýa
+                    we dieta</span><i>•</i>
+            </div>
+        </div>
+
+        <!-- ============ FEATURES ============ -->
+        <section class="section" id="features">
+            <div class="container">
+                <div class="sec-head reveal">
+                    <span class="eyebrow" data-i18n="feat_eyebrow">FEATURES</span>
+                    <h2 data-i18n="feat_title">Everything you need in one app</h2>
+                    <p data-i18n="feat_sub">Translation, phrasebook, learning and motivation — built offline-first with
+                        native performance.</p>
+                </div>
+                <div class="grid-feat">
+                    <article class="card feat reveal"><span class="tile t-blue"><svg viewBox="0 0 24 24">
+                                <path d="M3 5h8M7 3v2M4 19l5-11 5 11M6 15h6M13 19h8M17 5l4 14M15 13h5" />
+                            </svg></span>
+                        <h3 data-i18n="f1t">Text-to-text translation</h3>
+                        <p data-i18n="f1d">Instant translation between 50+ languages online, and Russian / English →
+                            Turkmen fully offline.</p>
+                    </article>
+                    <article class="card feat reveal"><span class="tile t-teal"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M2 2l20 20M8.5 6.8A10 10 0 0 1 12 6c5 0 9 3 10 6-.3.9-.9 1.9-1.8 2.8M6 9.3C4.2 10.4 2.8 11.6 2 12c1 3 5 6 10 6 1.3 0 2.5-.2 3.6-.6M12 12v3M12 18h.01" />
+                            </svg></span>
+                        <h3 data-i18n="f2t">Offline-first</h3>
+                        <p data-i18n="f2d">Phrasebook, history, favourites, XP and statistics work without internet.
+                            Your data stays on your device.</p>
+                    </article>
+                    <article class="card feat reveal"><span class="tile t-purple"><svg viewBox="0 0 24 24">
+                                <path d="M4 8h3l2-2.5h6L17 8h3v11H4z" />
+                                <circle cx="12" cy="13" r="3.2" />
+                            </svg></span>
+                        <h3 data-i18n="f3t">Camera translation (soon)</h3>
+                        <p data-i18n="f3d">Hybrid OCR in v2.0.0: ML Kit for Latin (~0.3s) + Tesseract for Cyrillic,
+                            Arabic, CJK and Devanagari.</p>
+                    </article>
+                    <article class="card feat reveal"><span class="tile t-blue"><svg viewBox="0 0 24 24">
+                                <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z" />
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M9 8h7M9 11.5h5" />
+                            </svg></span>
+                        <h3 data-i18n="f4t">Huge phrasebook</h3>
+                        <p data-i18n="f4d">4731 phrases in dozens of categories and subcategories — from greetings to
+                            restaurant and allergies.</p>
+                    </article>
+                    <article class="card feat reveal"><span class="tile t-amber"><svg viewBox="0 0 24 24">
+                                <rect x="3" y="6" width="12" height="15" rx="2" />
+                                <path d="M8 3h11a2 2 0 0 1 2 2v12M7 11h4M7 15h4" />
+                            </svg></span>
+                        <h3 data-i18n="f5t">Flashcards</h3>
+                        <p data-i18n="f5d">Learn words with cards: quick review anywhere, even with no network around.
+                        </p>
+                    </article>
+                    <article class="card feat reveal"><span class="tile t-teal"><svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="8.5" />
+                                <path d="M12 7.5V12l3 2M12 3.5V2M12 22v-1.5" />
+                            </svg></span>
+                        <h3 data-i18n="f6t">History & favourites</h3>
+                        <p data-i18n="f6d">Every translation is saved locally. Pin the phrases you use often — they are
+                            always one tap away.</p>
+                    </article>
+                    <article class="card feat reveal"><span class="tile t-pink"><svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="8" r="3.6" />
+                                <path d="M5 20c.8-3.6 3.6-5.4 7-5.4s6.2 1.8 7 5.4M8.5 3.5l1 2M15.5 3.5l-1 2" />
+                            </svg></span>
+                        <h3 data-i18n="f7t">Profile & progress</h3>
+                        <p data-i18n="f7d">XP levels 1–100, daily streaks, badges and the title “Translation Legend” for
+                            the most dedicated.</p>
+                    </article>
+                    <article class="card feat reveal"><span class="tile t-amber"><svg viewBox="0 0 24 24">
+                                <path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H13z" />
+                            </svg></span>
+                        <h3 data-i18n="f8t">Native speed</h3>
+                        <p data-i18n="f8d">Heavy calculations (XP, streaks, stats, JSON) run in C++17 via FFI — 10–60×
+                            faster than pure Dart.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ INTERFACE / SETTINGS DEMO ============ -->
+        <section class="section" id="interface">
+            <div class="container ui-in">
+                <div class="sec-head reveal">
+                    <span class="eyebrow" data-i18n="ui_eyebrow">INTERFACE</span>
+                    <h2 data-i18n="ui_title">Interface identical to the app</h2>
+                    <p data-i18n="ui_sub">Same cards, same toggles, same glow. This website speaks the exact same design
+                        language as Köpri.</p>
+                </div>
+
+                <div class="card settings-demo reveal">
+                    <div class="sd-head"><span class="tile t-blue sm"><svg viewBox="0 0 24 24">
+                                <path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z" />
+                            </svg></span><b data-i18n="demo_group">TERJIME</b></div>
+
+                    <div class="sd-row">
+                        <span class="tile t-blue sm"><svg viewBox="0 0 24 24">
+                                <rect x="3" y="5" width="18" height="14" rx="2" />
+                                <path d="M7 12h6M10 9l3 3-3 3" />
+                            </svg></span>
+                        <span class="sd-label" data-i18n="demo_src">Default source</span>
+                        <span class="sd-value"><i class="globe"></i><span data-i18n="demo_src_v">Auto</span></span>
+                    </div>
+
+                    <div class="sd-row">
+                        <span class="tile t-purple sm"><svg viewBox="0 0 24 24">
+                                <path d="M3 5h8M7 3v2M4 19l5-11 5 11M6 15h6M13 19h8M17 5l4 14M15 13h5" />
+                            </svg></span>
+                        <span class="sd-label" data-i18n="demo_tgt">Default translation</span>
+                        <span class="sd-value"><i class="flag-ru"></i><span data-i18n="demo_tgt_v">Russian</span></span>
+                    </div>
+
+                    <div class="sd-row">
+                        <span class="tile t-amber sm"><svg viewBox="0 0 24 24">
+                                <path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H13z" />
+                            </svg></span>
+                        <div class="sd-col"><span class="sd-label" data-i18n="demo_auto">Auto-translate</span><small
+                                data-i18n="demo_auto_d">Translate as you type</small></div>
+                        <label class="switch"><input type="checkbox" checked><span class="track"><span
+                                    class="knob"></span></span></label>
+                    </div>
+
+                    <div class="sd-slider">
+                        <div class="sd-slider-top"><span data-i18n="demo_delay">Delay</span><b id="delayVal">700 ms</b>
+                        </div>
+                        <input type="range" id="delayRange" min="100" max="2000" step="50" value="700">
+                    </div>
+
+                    <div class="sd-row">
+                        <span class="tile t-teal sm"><svg viewBox="0 0 24 24">
+                                <rect x="6" y="4" width="12" height="17" rx="2" />
+                                <path d="M9 4V3h6v1M10 10h4" />
+                            </svg></span>
+                        <div class="sd-col"><span class="sd-label" data-i18n="demo_buf">Translate from
+                                buffer</span><small data-i18n="demo_buf_d">Overlay translation on top of any app</small>
+                        </div>
+                        <label class="switch"><input type="checkbox"><span class="track"><span
+                                    class="knob"></span></span></label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ THEMES ============ -->
+        <section class="section" id="themes">
+            <div class="container">
+                <div class="sec-head reveal">
+                    <span class="eyebrow" data-i18n="th_eyebrow">THEMES</span>
+                    <h2 data-i18n="th_title">Three themes — light, dark and system</h2>
+                    <p data-i18n="th_sub">Try them right here: the whole website switches exactly like the app does.</p>
+                </div>
+
+                <div class="mode-cards reveal" id="modeCards">
+                    <button class="card mode" data-mode="light"><svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="4.2" />
+                            <path
+                                d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7" />
+                        </svg><b data-i18n="mode_light">Light</b></button>
+                    <button class="card mode" data-mode="dark"><svg viewBox="0 0 24 24">
+                            <path d="M20.4 14.2A8.4 8.4 0 0 1 9.8 3.6a8.4 8.4 0 1 0 10.6 10.6z" />
+                        </svg><b data-i18n="mode_dark">Dark</b></button>
+                    <button class="card mode" data-mode="system"><svg viewBox="0 0 24 24">
+                            <rect x="3" y="4.5" width="18" height="12" rx="2" />
+                            <path d="M9 20h6M12 16.5V20" />
+                        </svg><b data-i18n="mode_system">System</b><small data-i18n="mode_system_d">Follows your OS
+                            preference</small></button>
+                </div>
+
+                <div class="sec-head small reveal">
+                    <h3 data-i18n="pair_title">Light or dark — always perfect</h3>
+                    <p data-i18n="pair_sub">The preview follows your theme: light screenshot on light theme, dark on
+                        dark — full size, nothing cropped.</p>
+                </div>
+
+                <div class="theme-shot reveal">
+                    <figure class="phone-card auto" id="themeShotCard">
+                        <div class="frame">
+                            <img id="themeShotImg" src="assets/about_light.png" alt="Köpri theme preview">
+                        </div>
+                        <figcaption><i class="dot"></i><span id="themeShotLabel">Light theme</span></figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ GALLERY ============ -->
+        <section class="section" id="gallery">
+            <div class="container">
+                <div class="sec-head reveal">
+                    <span class="eyebrow" data-i18n="sh_eyebrow">GALLERY</span>
+                    <h2 data-i18n="sh_title">Screenshots</h2>
+                    <p data-i18n="sh_sub">Swipe through the real screens of Köpri.</p>
+                </div>
+            </div>
+            <div class="container shot-wrap reveal">
+                <button class="shot-arrow left" id="shotPrev" aria-label="Previous">‹</button>
+                <div class="shot-row" id="shotRow">
+                    <div class="phone mini"><span class="notch"></span>
+                        <div class="screen"><img src="assets/screenshots/1.jpg" alt="Screen 1"></div>
+                    </div>
+                    <div class="phone mini"><span class="notch"></span>
+                        <div class="screen"><img src="assets/screenshots/2.jpg" alt="Screen 2"></div>
+                    </div>
+                    <div class="phone mini"><span class="notch"></span>
+                        <div class="screen"><img src="assets/screenshots/3.jpg" alt="Screen 3"></div>
+                    </div>
+                    <div class="phone mini"><span class="notch"></span>
+                        <div class="screen"><img src="assets/screenshots/4.jpg" alt="Screen 4"></div>
+                    </div>
+                    <div class="phone mini"><span class="notch"></span>
+                        <div class="screen"><img src="assets/screenshots/5.jpg" alt="Screen 5"></div>
+                    </div>
+                    <div class="phone mini"><span class="notch"></span>
+                        <div class="screen"><img src="assets/screenshots/6.jpg" alt="Screen 6"></div>
+                    </div>
+                </div>
+                <button class="shot-arrow right" id="shotNext" aria-label="Next">›</button>
+            </div>
+        </section>
+
+        <!-- ============ PROGRESS ============ -->
+        <section class="section" id="progress">
+            <div class="container">
+                <div class="sec-head reveal">
+                    <span class="eyebrow" data-i18n="pr_eyebrow">PROGRESS</span>
+                    <h2 data-i18n="pr_title">Progress that motivates</h2>
+                    <p data-i18n="pr_sub">Every legend starts at zero. XP, streaks and daily goals — right on your
+                        profile screen.</p>
+                </div>
+                <div class="grid-prog">
+                    <div class="card prog reveal">
+                        <div class="prog-top"><span class="emoji">🌱</span><b><span data-i18n="lvl_title">Level</span>
+                                1</b><span class="xp">0 XP</span></div>
+                        <small class="muted" data-i18n="lvl_name">Novice</small>
+                        <div class="bar"><span style="--w:4%"></span></div>
+                        <small class="muted" data-i18n="lvl_hint">0 / 200 XP to level 2</small>
+                    </div>
+                    <div class="card prog accent reveal">
+                        <div class="prog-top"><span class="emoji">💤</span><b data-i18n="streak_title">0 days</b></div>
+                        <small class="muted" data-i18n="streak_sub">Start your streak today!</small>
+                        <div class="record"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0zM7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3" />
+                            </svg><span data-i18n="record">Record: 0 days</span></div>
+                    </div>
+                    <div class="card prog reveal">
+                        <div class="prog-top"><svg class="pflag" viewBox="0 0 24 24">
+                                <path d="M5 21V4c4-2 7 2 11 0v10c-4 2-7-2-11 0" />
+                            </svg><b data-i18n="goal_title">Daily goal</b><span class="xp">0/10</span></div>
+                        <div class="bar"><span style="--w:2%"></span></div>
+                        <small class="muted" data-i18n="goal_hint">translate 10 more times</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ LANGUAGES ============ -->
+        <section class="section" id="languages">
+            <div class="container">
+                <div class="sec-head reveal">
+                    <span class="eyebrow" data-i18n="lg_eyebrow">LANGUAGES</span>
+                    <h2 data-i18n="lg_title">One app — three languages</h2>
+                    <p data-i18n="lg_sub">This website too. Pick a language and everything switches instantly.</p>
+                </div>
+                <div class="grid-lang reveal" id="langCards">
+                    <div class="card lang"><span class="lang-code">EN</span><b>English</b><small class="muted"
+                            data-i18n="lg_card_d">Interface language</small><button data-lang="en"
+                            data-i18n="lg_choose">Select</button></div>
+                    <div class="card lang"><span class="lang-code">RU</span><b>Русский</b><small class="muted"
+                            data-i18n="lg_card_d">Interface language</small><button data-lang="ru"
+                            data-i18n="lg_choose">Select</button></div>
+                    <div class="card lang"><span class="lang-code">TM</span><b>Türkmençe</b><small class="muted"
+                            data-i18n="lg_card_d">Interface language</small><button data-lang="tk"
+                            data-i18n="lg_choose">Select</button></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ OPEN SOURCE ============ -->
+        <section class="section" id="oss">
+            <div class="container">
+                <div class="card oss reveal">
+                    <div class="oss-copy">
+                        <span class="eyebrow" data-i18n="os_eyebrow">OPEN SOURCE</span>
+                        <h2 data-i18n="os_title">Open source, built with Flutter and Dart</h2>
+                        <p data-i18n="os_sub">Köpri is free and open source. Read the code, report issues, contribute —
+                            the bridge is built together.</p>
+                        <div class="oss-meta">
+                            <div><small data-i18n="os_repo_l">Repository</small><b>Shapak-Apps / K-pri-App-for-phone</b>
+                            </div>
+                            <div><small data-i18n="os_author_l">Author</small><b>Aynazar Sylyyew • Shapak Apps</b></div>
+                        </div>
+                        <div class="chips">
+                            <span>Flutter 3.x</span><span>Dart 3.x</span><span>C++17 FFI</span><span>ML Kit
+                                OCR</span><span>Tesseract</span><span>Hive</span>
+                        </div>
+                        <a class="btn-primary" href="https://github.com/Shapak-Apps/K-pri-App-for-phone" target="_blank"
+                            rel="noopener">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.66.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                            </svg>
+                            <span data-i18n="os_btn">Open on GitHub</span>
+                        </a>
+                    </div>
+                    <div class="oss-art" aria-hidden="true">
+                        <img src="assets/app_icon.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============ ORGANIZATION ============ -->
+        <section class="section" id="organization">
+            <div class="container">
+                <div class="card org-card reveal">
+                    <div class="org-logo-wrap"><img src="assets/sapak.png" alt="Şapak Apps logo"></div>
+                    <div class="org-copy">
+                        <span class="org-eyebrow" data-i18n="org_eyebrow">ORGANIZATION</span>
+                        <h2 data-i18n="org_title">Köpri is a Şapak Apps project</h2>
+                        <p data-i18n="org_text">With gratitude to the open community Şapak Apps — for the trust, the
+                            joint code review and the chance to build free apps in Turkmen.</p>
+                        <a class="org-btn" href="organization.html">
+                            <span data-i18n="org_btn">About the organization</span>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M13 6l6 6-6 6" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============ CTA ============ -->
+        <section class="cta" id="cta">
+            <div class="container cta-in reveal">
+                <h2 data-i18n="cta_title">Ready to build your bridge?</h2>
+                <p data-i18n="cta_sub">Download Köpri from RuStore or explore the source code on GitHub.</p>
+                <div class="hero-cta center">
+                    <a class="store-badge big light" href="https://www.rustore.ru/catalog/app/com.kopri.translator"
+                        target="_blank" rel="noopener">
+                        <img class="rs-icon" src="assets/rustore.svg"
+                            onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e5/RuStore_logo.svg';"
+                            alt="RuStore">
+                        <span class="sb-text"><small data-i18n="badge_small">Get it on</small><b>RuStore</b></span>
+                    </a>
+                    <a class="btn-ghost light" href="https://github.com/Shapak-Apps/K-pri-App-for-phone" target="_blank"
+                        rel="noopener">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.66.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                        </svg>
+                        <span data-i18n="gh_btn">Source code</span>
+                    </a>
+                </div>
+                <small class="cta-note" data-i18n="cta_note">Free & open source • v1.0.2 • Android</small>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer">
+        <div class="container foot-in">
+            <div class="foot-brand">
+                <a class="brand" href="#hero"><img src="assets/app_icon.png" alt="" class="brand-icon"><span
+                        class="brand-name">Köp<em>ri</em></span></a>
+                <p data-i18n="ft_desc">Offline-first translator with a huge phrasebook and a clean UI.</p>
+                <a class="store-badge" href="https://www.rustore.ru/catalog/app/com.kopri.translator" target="_blank"
+                    rel="noopener">
+                    <img class="rs-icon" src="assets/rustore.svg"
+                        onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e5/RuStore_logo.svg';"
+                        alt="RuStore">
+                    <span class="sb-text"><small data-i18n="badge_small">Get it on</small><b>RuStore</b></span>
+                </a>
+            </div>
+            <div class="foot-col">
+                <b data-i18n="ft_product">Product</b>
+                <a href="#features" data-i18n="nav_features">Features</a>
+                <a href="#themes" data-i18n="nav_themes">Themes</a>
+                <a href="#gallery" data-i18n="nav_shots">Screenshots</a>
+            </div>
+            <div class="foot-col">
+                <b data-i18n="os_eyebrow">OPEN SOURCE</b>
+                <a href="https://github.com/Shapak-Apps/K-pri-App-for-phone" target="_blank" rel="noopener"
+                    data-i18n="ft_source">Source code</a>
+                <a href="https://github.com/aynazar-sylyyew-dev" target="_blank" rel="noopener"
+                    data-i18n="ft_author">Author</a>
+                <a href="https://www.rustore.ru/catalog/app/com.kopri.translator" target="_blank" rel="noopener"
+                    data-i18n="ft_download">Download on RuStore</a>
+            </div>
+        </div>
+        <div class="container foot-note"><small data-i18n="ft_note">© 2026 Köpri • Şapak App Series. All trademarks
+                belong to their owners.</small></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

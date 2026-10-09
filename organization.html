@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şapak Apps — the community behind Köpri</title>
+    <meta name="description"
+        content="Şapak Apps — open-source community from Turkmenistan. The organization behind Köpri.">
+    <link rel="icon" type="image/png" href="assets/sapak.png">
+    <style>
+        :root {
+            --bg: #FBFAF8;
+            --fg: #17150F;
+            --muted: #6E675B;
+            --rule: #E3DFD6;
+            --brand: #FF851B;
+            --accent: #B25A0C;
+            --accent-soft: #FF851B1F;
+            --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --mono: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, monospace;
+        }
+
+        html[data-theme="dark"] {
+            --bg: #131210;
+            --fg: #EDEAE3;
+            --muted: #948C7E;
+            --rule: #282621;
+            --accent: #FF9D4D;
+            --accent-soft: #FF851B26;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            transition: background .3s, color .3s
+        }
+
+        img {
+            display: block;
+            max-width: 100%
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        button {
+            font-family: inherit;
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: inherit
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        svg.fill {
+            fill: currentColor;
+            stroke: none
+        }
+
+        .wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px
+        }
+
+        /* header */
+        .org-top {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: color-mix(in srgb, var(--bg) 85%, transparent);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--rule)
+        }
+
+        .top-in {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            height: 64px
+        }
+
+        .back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 600;
+            transition: .2s
+        }
+
+        .back:hover {
+            color: var(--accent)
+        }
+
+        .back svg {
+            width: 18px;
+            height: 18px
+        }
+
+        .org-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .org-brand img {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            border: 1px solid var(--rule)
+        }
+
+        .org-brand b {
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -.01em
+        }
+
+        .lang {
+            margin-left: auto;
+            display: flex;
+            gap: 2px;
+            border: 1px solid var(--rule);
+            border-radius: 10px;
+            padding: 3px
+        }
+
+        .lang button {
+            padding: 5px 11px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--muted);
+            transition: .2s
+        }
+
+        .lang button.on {
+            background: var(--brand);
+            color: #fff
+        }
+
+        /* type */
+        .eyebrow {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 0 0 20px
+        }
+
+        .label {
+            font-family: var(--mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .15em;
+            color: var(--muted);
+            margin: 0 0 26px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--rule)
+        }
+
+        section {
+            margin-bottom: 66px
+        }
+
+        /* hero */
+        .hero {
+            padding: 84px 0 44px
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 4.5vw, 56px);
+            font-weight: 500;
+            letter-spacing: -.03em;
+            line-height: 1.05;
+            max-width: 24ch
+        }
+
+        .hero .lead {
+            margin: 24px 0 0;
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.65;
+            max-width: 58ch
+        }
+
+        /* thanks */
+        .thanks-big {
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: -.02em;
+            margin: 0 0 14px
+        }
+
+        .thanks-text {
+            color: var(--muted);
+            max-width: 64ch;
+            line-height: 1.7
+        }
+
+        /* principles */
+        .grid4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px
+        }
+
+        .principle {
+            border-top: 2px solid var(--fg);
+            padding-top: 14px
+        }
+
+        .principle h3 {
+            font-size: 16.5px;
+            font-weight: 600
+        }
+
+        .principle p {
+            margin: 8px 0 0;
+            color: var(--muted);
+            font-size: 14.5px;
+            line-height: 1.6
+        }
+
+        /* people — rendered like the official site: GitHub avatar, circle 84px */
+        .members {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 44px 40px
+        }
+
+        .member {
+            border-top: 2px solid var(--fg);
+            padding-top: 24px
+        }
+
+        .member .who {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 18px
+        }
+
+        .member .who img {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            background: var(--rule);
+            display: block;
+            flex: none;
+            object-fit: cover;
+        }
+
+        .member h3 {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -.015em
+        }
+
+        .member .role {
+            margin: 6px 0 0;
+            color: var(--muted);
+            font-size: 15.5px;
+            line-height: 1.45
+        }
+
+        .member .links {
+            margin: 18px 0 0;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 14.5px
+        }
+
+        .member .links a {
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 1px;
+            transition: .2s
+        }
+
+        .member .links a:hover {
+            border-bottom-color: var(--accent);
+            color: var(--accent)
+        }
+
+        /* projects */
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px
+        }
+
+        .chips span {
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: .06em;
+            padding: 8px 15px;
+            border: 1px solid var(--rule);
+            border-radius: 999px
+        }
+
+        .chips span:first-child {
+            background: var(--brand);
+            border-color: var(--brand);
+            color: #fff
+        }
+
+        /* actions */
+        .actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            padding-bottom: 26px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 26px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid transparent;
+            transition: .2s
+        }
+
+        .btn svg {
+            width: 19px;
+            height: 19px
+        }
+
+        .btn.primary {
+            background: var(--brand);
+            color: #fff;
+            box-shadow: 0 12px 30px rgba(255, 133, 27, .28)
+        }
+
+        .btn.primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px)
+        }
+
+        .btn.secondary {
+            border-color: var(--rule);
+            color: var(--fg)
+        }
+
+        .btn.secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent)
+        }
+
+        /* footer — only the copyright line */
+        .org-foot {
+            border-top: 1px solid var(--rule);
+            padding: 26px 0;
+            margin-top: 30px
+        }
+
+        .foot-in {
+            text-align: center;
+            color: var(--muted)
+        }
+
+        @media (max-width:900px) {
+            .grid4 {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .members {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media (max-width:600px) {
+
+            .grid4,
+            .members {
+                grid-template-columns: 1fr
+            }
+
+            .hero {
+                padding: 56px 0 32px
+            }
+
+            .back span {
+                display: none
+            }
+
+            .top-in {
+                gap: 12px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="org-top">
+        <div class="wrap top-in">
+            <a class="back" href="index.html"><svg viewBox="0 0 24 24">
+                    <path d="M19 12H5M11 6l-6 6 6 6" />
+                </svg><span data-i18n="back">Back to Köpri</span></a>
+            <a class="org-brand" href="https://github.com/Shapak-Apps/" target="_blank" rel="noopener">
+                <img src="assets/sapak.png" alt="Şapak Apps"><b>Şapak Apps</b>
+            </a>
+            <div class="lang" id="langSeg">
+                <button data-lang="en">EN</button><button data-lang="ru">RU</button><button data-lang="tk">TM</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="hero">
+            <p class="eyebrow" data-i18n="eyebrow">OPEN SOURCE TURKMENISTAN</p>
+            <h1 data-i18n="h1">Şapak Apps — the community behind Köpri</h1>
+            <p class="lead" data-i18n="lead">Free, open-source apps in Turkmen. Köpri is one of the projects born here —
+                reviewed line by line by the community.</p>
+        </section>
+
+        <section>
+            <p class="label" data-i18n="thanks_label">WITH GRATITUDE</p>
+            <p class="thanks-big" data-i18n="thanks_big">Thank you</p>
+            <p class="thanks-text" data-i18n="thanks_text">Köpri exists thanks to the people who review code in Turkmen
+                and Russian, open issues and believe that a small language deserves great software. This page is our
+                small thank-you note.</p>
+        </section>
+
+        <section>
+            <p class="label" data-i18n="pr_label">WHAT WE ARE GRATEFUL FOR</p>
+            <div class="grid4">
+                <div class="principle">
+                    <h3 data-i18n="pr1t">Open code</h3>
+                    <p data-i18n="pr1d">MIT, Apache-2.0, GPL-3.0 — take it, change it, use it. Reviews happen in the
+                        open.</p>
+                </div>
+                <div class="principle">
+                    <h3 data-i18n="pr2t">Works offline</h3>
+                    <p data-i18n="pr2d">No internet required. Internet is expensive and slow in Turkmenistan — this is a
+                        principle, not an accident.</p>
+                </div>
+                <div class="principle">
+                    <h3 data-i18n="pr3t">Free & no ads</h3>
+                    <p data-i18n="pr3d">No ads, no payments, no data collection. Ever.</p>
+                </div>
+                <div class="principle">
+                    <h3 data-i18n="pr4t">In Turkmen</h3>
+                    <p data-i18n="pr4d">Interfaces in Turkmen; code review in Turkmen and Russian — weak English is not
+                        a barrier.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <p class="label" data-i18n="ppl_label">THE PEOPLE WE THANK</p>
+            <div class="members">
+                <article class="member">
+                    <div class="who">
+                        <img src="https://github.com/TheSeydiCharyyev.png?size=160" alt="" width="84" height="84"
+                            loading="lazy">
+                        <div>
+                            <h3>Seydi Charyyev</h3>
+                            <p class="role" data-i18n="role1">Full Stack JavaScript Engineer · React Native</p>
+                        </div>
+                    </div>
+                    <div class="links"><a href="https://github.com/TheSeydiCharyyev" target="_blank"
+                            rel="noopener">GitHub</a></div>
+                </article>
+                <article class="member">
+                    <div class="who">
+                        <img src="https://github.com/aynazar-sylyyew-dev.png?size=160" alt="" width="84" height="84"
+                            loading="lazy">
+                        <div>
+                            <h3>Aýnazar Sylyýew</h3>
+                            <p class="role" data-i18n="role2">Software Engineer · Android, web, cross-platform</p>
+                        </div>
+                    </div>
+                    <div class="links"><a href="https://github.com/aynazar-sylyyew-dev" target="_blank"
+                            rel="noopener">GitHub</a></div>
+                </article>
+                <article class="member">
+                    <div class="who">
+                        <img src="https://github.com/Bahram2006.png?size=160" alt="" width="84" height="84"
+                            loading="lazy">
+                        <div>
+                            <h3>Bahram Myradow</h3>
+                            <p class="role" data-i18n="role3">Fullstack JavaScript Engineer · React Native</p>
+                        </div>
+                    </div>
+                    <div class="links">
+                        <a href="https://github.com/Bahram2006" target="_blank" rel="noopener">GitHub</a>
+                        <a href="https://myradow-bahram-portfolio.vercel.app/" target="_blank"
+                            rel="noopener">Portfolio</a>
+                    </div>
+                </article>
+                <article class="member">
+                    <div class="who">
+                        <img src="https://github.com/fihdeveloper.png?size=160" alt="" width="84" height="84"
+                            loading="lazy">
+                        <div>
+                            <h3>Merdan Jumamyradow</h3>
+                            <p class="role" data-i18n="role4">Web and mobile developer · JavaScript, Dart, Go</p>
+                        </div>
+                    </div>
+                    <div class="links"><a href="https://github.com/fihdeveloper" target="_blank"
+                            rel="noopener">GitHub</a></div>
+                </article>
+                <article class="member">
+                    <div class="who">
+                        <img src="https://github.com/ahmedbatyrovv.png?size=160" alt="" width="84" height="84"
+                            loading="lazy">
+                        <div>
+                            <h3>Ahmed Batyrov</h3>
+                            <p class="role" data-i18n="role5">Web developer · Node.js, React</p>
+                        </div>
+                    </div>
+                    <div class="links"><a href="https://github.com/ahmedbatyrovv" target="_blank"
+                            rel="noopener">GitHub</a></div>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <p class="label" data-i18n="proj_label">PROJECTS OF THE ORGANIZATION</p>
+            <div class="chips">
+                <span>Köpri</span><span>Ykjam Terjime</span><span>Hytaý dili 1</span><span>Iňlis dili
+                    1</span><span>BluePlayer</span><span>Küşt</span>
+            </div>
+        </section>
+
+        <section class="actions">
+            <a class="btn primary" href="https://shapak-apps.github.io/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="8.5" />
+                    <path
+                        d="M3.5 12h17M12 3.5c2.5 2.3 3.8 5.2 3.8 8.5s-1.3 6.2-3.8 8.5c-2.5-2.3-3.8-5.2-3.8-8.5s1.3-6.2 3.8-8.5z" />
+                </svg>
+                <span data-i18n="btn_site">Organization website</span>
+            </a>
+            <a class="btn secondary" href="https://github.com/Shapak-Apps/" target="_blank" rel="noopener">
+                <svg class="fill" viewBox="0 0 24 24">
+                    <path
+                        d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.66.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                </svg>
+                <span data-i18n="btn_gh">GitHub organization</span>
+            </a>
+        </section>
+    </main>
+
+    <footer class="org-foot">
+        <div class="wrap foot-in">
+            <small>© 2026 Şapak Apps</small>
+        </div>
+    </footer>
+
+    <script>
+        const ORG = {
+            en: { back: "Back to Köpri", eyebrow: "OPEN SOURCE TURKMENISTAN", h1: "Şapak Apps — the community behind Köpri", lead: "Free, open-source apps in Turkmen. Köpri is one of the projects born here — reviewed line by line by the community.", thanks_label: "WITH GRATITUDE", thanks_big: "Thank you", thanks_text: "Köpri exists thanks to the people who review code in Turkmen and Russian, open issues and believe that a small language deserves great software. This page is our small thank-you note.", pr_label: "WHAT WE ARE GRATEFUL FOR", pr1t: "Open code", pr1d: "MIT, Apache-2.0, GPL-3.0 — take it, change it, use it. Reviews happen in the open.", pr2t: "Works offline", pr2d: "No internet required. Internet is expensive and slow in Turkmenistan — this is a principle, not an accident.", pr3t: "Free & no ads", pr3d: "No ads, no payments, no data collection. Ever.", pr4t: "In Turkmen", pr4d: "Interfaces in Turkmen; code review in Turkmen and Russian — weak English is not a barrier.", ppl_label: "THE PEOPLE WE THANK", role1: "Full Stack JavaScript Engineer · React Native", role2: "Software Engineer · Android, web, cross-platform", role3: "Fullstack JavaScript Engineer · React Native", role4: "Web and mobile developer · JavaScript, Dart, Go", role5: "Web developer · Node.js, React", proj_label: "PROJECTS OF THE ORGANIZATION", btn_site: "Organization website", btn_gh: "GitHub organization", title: "Şapak Apps — the community behind Köpri" },
+            ru: { back: "Назад к Köpri", eyebrow: "OPEN SOURCE TURKMENISTAN", h1: "Şapak Apps — сообщество, стоящее за Köpri", lead: "Бесплатные приложения с открытым кодом на туркменском. Köpri — один из проектов, рождённых здесь: код проверяется сообществом строка за строкой.", thanks_label: "С БЛАГОДАРНОСТЬЮ", thanks_big: "Спасибо", thanks_text: "Köpri существует благодаря людям, которые ревьювят код на туркменском и русском, открывают issues и верят, что маленький язык заслуживает большого софта. Эта страница — наша маленькая благодарность.", pr_label: "ЗА ЧТО МЫ БЛАГОДАРНЫ", pr1t: "Открытый код", pr1d: "MIT, Apache-2.0, GPL-3.0 — бери, меняй, используй. Ревью проходят открыто.", pr2t: "Работает офлайн", pr2d: "Без интернета. Интернет в Туркменистане дорогой и медленный — это принцип, а не случайность.", pr3t: "Бесплатно и без рекламы", pr3d: "Без рекламы, платежей и сбора данных. Никогда.", pr4t: "На туркменском", pr4d: "Интерфейсы на туркменском; код‑ревью на туркменском и русском — слабый английский не преграда.", ppl_label: "ЛЮДИ, КОТОРЫМ МЫ БЛАГОДАРНЫ", role1: "Full Stack JavaScript‑инженер · React Native", role2: "Инженер‑программист · Android, веб, кроссплатформа", role3: "Fullstack JavaScript‑инженер · React Native", role4: "Веб‑ и мобильный разработчик · JavaScript, Dart, Go", role5: "Веб‑разработчик · Node.js, React", proj_label: "ПРОЕКТЫ ОРГАНИЗАЦИИ", btn_site: "Сайт организации", btn_gh: "GitHub организации", title: "Şapak Apps — сообщество за Köpri" },
+            tk: { back: "Yza Körpä", eyebrow: "OPEN SOURCE TURKMENISTAN", h1: "Şapak Apps — Köpriň arkasyndaky jemgyýet", lead: "Türkmen dilinde mugt we açyk kodly programmalar. Köpri şol ýerde dörän taslamalaryň biri: kody jemgyýet setirbe‑setir barlaýar.", thanks_label: "SAG BOL AÝTMAK BILEN", thanks_big: "Sag boluň", thanks_text: "Köpri bar, sebäbi kodu türkmen we rus dillerinde barlaýan, mesele açýan we kiçi diliň uly programma mynasypdygyna ynanýan adamlar bar. Bu sahypa — biziň kiçi sagbolsunymyz.", pr_label: "NÄME ÜÇIN SAG BOL AÝTÝARYS", pr1t: "Açyk kod", pr1d: "MIT, Apache-2.0, GPL-3.0 — al, üýtget, ulan. Barlaglar açyk geçýär.", pr2t: "Internetsiz", pr2d: "Internetsiz işleýär. Türkmenistanda internet gymmat we haýal — bu ýörelge, tötänlik däl.", pr3t: "Mugt we mahabatsyz", pr3d: "Mahabat, töleg, maglumat ýygnamak ýok. Asla.", pr4t: "Türkmen dilinde", pr4d: "Interfeýs türkmen dilinde; kod barlagy türkmen we rus dillerinde — iňlis diliň gowşak bolsa päsgel däl.", ppl_label: "SAGBOLSUN AÝDÝÄN ADAMLARYMYZ", role1: "Full Stack JavaScript inženeri · React Native", role2: "Programma inženeri · Android, web, kross‑platforma", role3: "Fullstack JavaScript inženeri · React Native", role4: "Web we mobil programmaçy · JavaScript, Dart, Go", role5: "Web programmaçy · Node.js, React", proj_label: "GURAMANYŇ TASLAMALARY", btn_site: "Guramanyň saýty", btn_gh: "GitHub guramasy", title: "Şapak Apps — Köpriň jemgyýeti" }
+        };
+        let lang = localStorage.getItem('kopri-lang') ||
+            (navigator.language.startsWith('ru') ? 'ru' : navigator.language.startsWith('tk') ? 'tk' : 'en');
+        function applyLang(l) {
+            lang = l; localStorage.setItem('kopri-lang', l);
+            const d = ORG[l] || ORG.en;
+            document.documentElement.lang = l; document.title = d.title;
+            document.querySelectorAll('[data-i18n]').forEach(el => { if (d[el.dataset.i18n] !== undefined) el.textContent = d[el.dataset.i18n]; });
+            document.querySelectorAll('#langSeg button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+        }
+        document.querySelectorAll('#langSeg button').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+        /* theme: shared with Köpri site (light/dark/system) */
+        const mq = matchMedia('(prefers-color-scheme: dark)');
+        const pref = localStorage.getItem('kopri-theme') || 'system';
+        function applyTheme() { document.documentElement.dataset.theme = (pref === 'dark' || (pref === 'system' && mq.matches)) ? 'dark' : 'light'; }
+        mq.addEventListener('change', applyTheme); applyTheme(); applyLang(lang);
+    </script>
+</body>
+
+</html>
